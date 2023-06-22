@@ -5,19 +5,6 @@ import { User } from "./User";
 const LOGOUT_URL = "/protected/logout";
 export const Profile = () => {
   const auth = useAuth();
-  const {
-    firstName,
-    lastName,
-    email,
-    address1,
-    address2,
-    city,
-    state,
-    zip,
-    tel,
-    userId,
-    isadmin,
-  } = auth.user;
   const navigate = useNavigate();
   const handleLogout = async () => {
     try {

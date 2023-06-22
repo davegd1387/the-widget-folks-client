@@ -1,17 +1,12 @@
 import { useRef, useState, useEffect } from "react";
-import { useLocation, useNavigate } from "react-router-dom";
 import Product from "./Product";
 import axios from "../api/axios";
 const Products_URL = "/items/";
 
 const Products = () => {
   const errRef = useRef();
-  const navigate = useNavigate();
-  const location = useLocation();
-  const redirectPath = location.state?.path || "/products";
   const [products, setProducts] = useState([]);
   const [errMsg, setErrMsg] = useState("");
-  const [success, setSuccess] = useState(false);
 
   const getProducts = async () => {
     const { data } = await axios.get(`${Products_URL}`, {

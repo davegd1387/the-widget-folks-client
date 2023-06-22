@@ -98,10 +98,6 @@ const Login = () => {
       {success ? (
         <section>
           <h1>You are logged in {auth.user.firstName}!</h1>
-          <br />
-          <p>
-            <a href="#">Go to Home</a>
-          </p>
         </section>
       ) : (
         <section className="login-form">

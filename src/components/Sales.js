@@ -1,6 +1,6 @@
 import { useRef, useState, useEffect } from "react";
 import { useAuth } from "../context/auth";
-import { Link, useLocation, useNavigate } from "react-router-dom";
+import { Link } from "react-router-dom";
 
 import axios from "../api/axios";
 const Sales_URL = "/protected/sales/";
@@ -10,9 +10,6 @@ const Sales = () => {
   const { firstName, lastName, userId } = auth.user;
 
   const errRef = useRef();
-  // const navigate = useNavigate();
-  const location = useLocation();
-  // const redirectPadiv = location.state?.padiv || "/profile";
   const [sales, setSales] = useState([]);
   const [yesNoSales, setYesNoSales] = useState("");
   const [errMsg, setErrMsg] = useState("");

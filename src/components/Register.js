@@ -1,5 +1,5 @@
 import { useRef, useState, useEffect } from "react";
-import { Link, useLocation, useNavigate } from "react-router-dom";
+import { useLocation, useNavigate } from "react-router-dom";
 
 import {
   faCheck,
@@ -13,13 +13,17 @@ import { useAuth } from "../context/auth";
 
 const EMAIL_REGEX =
   /^[a-zA-Z0-9.!#$%&’*+/=?^_`{|}~-]+@[a-zA-Z0-9-]+(?:.[a-zA-Z0-9-]+)*$/;
-const STREET_REGEX = /^[0-9a-zA-Z\s\.\-\`\#]{5,30}$/;
-const STREET2_REGEX = /^[0-9a-zA-Z\s\.\-\`\#]{0,30}$/;
+const STREET_REGEX = /^[0-9a-zA-Z\s]{5,30}$/;
+// const STREET_REGEX = /^[0-9a-zA-Z\s\.\-\`\#]{5,30}$/;
+const STREET2_REGEX = /^[0-9a-zA-Z\s]{0,30}$/;
+// const STREET2_REGEX = /^[0-9a-zA-Z\s\.\-\`\#]{0,30}$/;
 const PWD_REGEX = /^(?=.*[a-z])(?=.*[A-Z])(?=.*[0-9])(?=.*[!@#$%]).{8,24}$/;
-const NAME_REGEX = /[a-zA-Z\s\.\-\`]{1,30}$/;
+const NAME_REGEX = /[a-zA-Z\s]{1,30}$/;
+// const NAME_REGEX = /[a-zA-Z\s\.\-\`]{1,30}$/;
 const ZIP_REGEX = /^[0-9]{5}$/;
 const TELEPHONE_REGEX = /\d{3}-\d{3}-\d{4}/;
-const CITY_REGEX = /^[A-Za-z][A-Za-z\'\-\.]+([\ A-Za-z][A-Za-z\'\-\.\s]+)*/;
+const CITY_REGEX = /^[A-Za-z][A-Za-z]+([A-Za-z][A-Za-z\-\s]+)*/;
+// const CITY_REGEX = /^[A-Za-z][A-Za-z\'\-\.]+([\ A-Za-z][A-Za-z\'\-\.\s]+)*/;
 const REGISTER_URL = "/auth/register";
 
 const Register = () => {
@@ -233,9 +237,6 @@ const Register = () => {
       {success ? (
         <section>
           <h1>Success!</h1>
-          <p>
-            <a href="#">Sign In</a>
-          </p>
         </section>
       ) : (
         <section className="register-form">
@@ -563,6 +564,13 @@ const Register = () => {
             >
               {options}
             </select>
+            <p
+              id="stnote"
+              className={stFocus && st && !validSt ? "instructions" : "hide"}
+            >
+              <FontAwesomeIcon icon={faInfoCircle} />
+              State Required!
+            </p>
             <label htmlFor="zip">
               Zip:
               <FontAwesomeIcon

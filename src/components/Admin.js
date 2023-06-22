@@ -1,13 +1,9 @@
-// import { useNavigate } from "react-router-dom";
-// import { useAuth } from "../context/auth";
-import { useRef, useState, useEffect } from "react";
+import { useState } from "react";
 
 import axios from "../api/axios";
 const ADMIN_URL = "/protected/admin";
 export const Admin = () => {
-  //   const auth = useAuth();
   const [custnum, setCustnum] = useState("");
-  //   const [email, setEmail] = useState("");
   const handleSubmit = async (e) => {
     e.preventDefault();
 
