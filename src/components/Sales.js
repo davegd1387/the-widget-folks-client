@@ -1,7 +1,7 @@
 import { useRef, useState, useEffect } from "react";
 import { useAuth } from "../context/auth";
 import { Link } from "react-router-dom";
-
+import taxStatus from "../utils/taxStatus";
 import axios from "../api/axios";
 const Sales_URL = "/protected/sales/";
 
@@ -23,9 +23,9 @@ const Sales = () => {
       });
       // console.log(JSON.stringify(data));
       if (data.length > 0) {
-        setYesNoSales("Sales for ");
+        setYesNoSales("Purchases for ");
       } else {
-        setYesNoSales("Sorry, no sales for ");
+        setYesNoSales("Sorry, no surchases for ");
       }
       setSales(data);
     } catch (err) {
@@ -62,14 +62,15 @@ const Sales = () => {
         {sales.length > 0 && (
           <ul className="sales__container">
             <div className="sales__li">
-              <div className="sales__header">Sales ID</div>
+              <div className="sales__header">Click On</div>
               <div className="sales__header">Date</div>
               <div className="sales__header">Amount</div>
               <div className="sales__header">Sales Tax</div>
               <div className="sales__header">Status</div>
             </div>
             {sales.map((sale) => (
-              <li key={sale.item} className="sales__li">
+              // <li key={sale.item} className="sales__li">
+              <li key={sale.saleId} className="sales__li">
                 <div className="sales__item">
                   <Link
                     className="sales__link"
@@ -88,7 +89,7 @@ const Sales = () => {
                 <div className="sales__item">
                   {parseFloat(sale.tax).toFixed(2)}
                 </div>
-                <div className="sales__item">{sale.taxStatus}</div>
+                <div className="sales__item">{taxStatus(sale.taxStatus)}</div>
               </li>
             ))}
           </ul>

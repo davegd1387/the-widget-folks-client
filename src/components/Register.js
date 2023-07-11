@@ -10,6 +10,7 @@ import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import axios from "../api/axios";
 import stateList from "../utils/stateList";
 import { useAuth } from "../context/auth";
+import { useShop } from "../context/shop-cart";
 
 const EMAIL_REGEX =
   /^[a-zA-Z0-9.!#$%&’*+/=?^_`{|}~-]+@[a-zA-Z0-9-]+(?:.[a-zA-Z0-9-]+)*$/;
@@ -35,6 +36,7 @@ const Register = () => {
     );
   });
   const auth = useAuth();
+  const shop = useShop();
   const emailRef = useRef();
   const errRef = useRef();
   const navigate = useNavigate();
@@ -89,6 +91,8 @@ const Register = () => {
   const [success, setSuccess] = useState(false);
 
   useEffect(() => {
+    shop.clearCart();
+    auth.logout();
     emailRef.current.focus();
   }, []);
 
@@ -243,7 +247,7 @@ const Register = () => {
           <p ref={errRef} className={errMsg ? "errmsg" : "offscreen"}>
             {errMsg}
           </p>
-          <h2>Register</h2>
+          {/* <h2>Register</h2> */}
           <form onSubmit={handleSubmit}>
             {/* <div className="register">
               <div className="register-first"> */}

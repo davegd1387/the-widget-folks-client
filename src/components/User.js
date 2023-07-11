@@ -18,27 +18,27 @@ export const User = () => {
 
   return (
     <div className="customer">
-      <h2>Welcome:</h2>
       <span className="custname">
         {firstName} {lastName}{" "}
       </span>
       {isadmin && "(admin)"}
       <br />
-      {email}
+      <span className="email">{email}</span>
+
       <br />
-      {address1}
+      <span className="address">
+        {address1} <br />
+        {address2 && address2}
+        {address2 && <br />}
+        {city}, {state} {zip}
+      </span>
       <br />
-      {address2 != null && address2}
-      {address2 != null && <br />}
-      {city}, {state} {zip}
-      <br />
-      {tel}
+      <span className="telephone">{tel}</span>
       <br />
       {isadmin && `Customer id: ${custId}`}
-      <br />
-      <br />
+      {/* <br />
       User id: {userId}
-      <br />
+      <br /> */}
     </div>
   );
 };

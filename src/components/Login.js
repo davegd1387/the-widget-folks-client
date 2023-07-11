@@ -1,5 +1,6 @@
 import { useRef, useState, useEffect } from "react";
 import { useAuth } from "../context/auth";
+import { useShop } from "../context/shop-cart";
 import { useLocation, useNavigate } from "react-router-dom";
 
 import axios from "../api/axios";
@@ -7,6 +8,8 @@ const LOGIN_URL = "/auth/local";
 
 const Login = () => {
   const auth = useAuth();
+
+  const shop = useShop();
   const userRef = useRef();
   const errRef = useRef();
   const navigate = useNavigate();
@@ -19,6 +22,7 @@ const Login = () => {
   const [success, setSuccess] = useState(false);
 
   useEffect(() => {
+    auth.logout();
     userRef.current.focus();
   }, []);
 
@@ -52,8 +56,9 @@ const Login = () => {
         isadmin,
         custId,
       } = response?.data;
-      console.log();
 
+      console.log(`on login, custId: ${custId}`);
+      shop.clearCart();
       auth.login({
         email,
         pwd,
@@ -108,7 +113,7 @@ const Login = () => {
           >
             {errMsg}
           </p>
-          <h2>Sign In</h2>
+          {/* <h2>Sign2 In</h2> */}
           <form onSubmit={handleSubmit}>
             <label htmlFor="username">Email (Username):</label>
             <input
@@ -131,15 +136,8 @@ const Login = () => {
               value={pwd}
               required
             />
-            <button>Sign In</button>
+            <button>Log In</button>
           </form>
-          {/* <p>
-            Need an Account?
-            <br />
-            <span className="line">
-              <Link to="/register">Register Here!</Link>
-            </span>
-          </p> */}
         </section>
       )}
     </>

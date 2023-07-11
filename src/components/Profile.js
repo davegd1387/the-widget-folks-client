@@ -6,23 +6,14 @@ const LOGOUT_URL = "/protected/logout";
 export const Profile = () => {
   const auth = useAuth();
   const navigate = useNavigate();
-  const handleLogout = async () => {
-    try {
-      const response = await axios.get(LOGOUT_URL, {
-        headers: { "Content-Type": "application/json" },
-        withCredentials: true,
-      });
-      console.log(`response.data: ${JSON.stringify(response?.data)}`);
-      auth.logout();
-      navigate("/");
-    } catch (err) {
-      console.log(`err.response: ${JSON.stringify(err.response)}`);
-      auth.logout();
-    }
+  const handleLogout = () => {
+    auth.logout();
+    navigate("/");
   };
 
   return (
     <div className="profile">
+      <h2>Welcome</h2>
       <User />
       <button onClick={handleLogout}>Logout</button>
     </div>
