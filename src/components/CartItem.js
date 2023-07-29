@@ -39,7 +39,10 @@ export const CartItem = (props) => {
             updateCartItemQuantity(Number(e.target.value), itemId)
           }
         />
-        <button onClick={() => addToCart(itemId)} className="cart__button">
+        <button
+          className="cart__input cart__button"
+          onClick={() => addToCart(itemId)}
+        >
           {plusSign}
         </button>
       </div>

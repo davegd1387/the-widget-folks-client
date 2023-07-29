@@ -1,7 +1,7 @@
 import React from "react";
 import { NavLink } from "react-router-dom";
 import { useAuth } from "../context/auth";
-
+import "./navbar.css";
 const Navbar = () => {
   const navLinkStyles = ({ isActive }) => {
     return {

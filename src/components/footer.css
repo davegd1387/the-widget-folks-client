@@ -1,0 +1,32 @@
+.footer {
+    position: sticky;
+    z-index: 1;
+    bottom: 0;
+    background-color: var(--HEADER-BGCOLOR);
+    color: var(--HEADER-COLOR);
+    padding: var(--PADDING-TB) var(--PADDING-SIDE);
+    display: flex;
+    flex-wrap: wrap;
+    flex-direction: row;
+    justify-content: space-evenly;
+    gap: 1rem;
+    margin-bottom: 1em;
+    /* text-align: center; */
+}
+
+.footer__para {
+    text-align: center;
+}
+
+@media screen and (max-width: 480px) {
+    .footer__para {
+        font-size: .5rem;
+    }
+}
+
+
+/* @media screen and (min-width: 480px) {
+    .footer__para {
+        font-size: .5rem;
+    }
+} */

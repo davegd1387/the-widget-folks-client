@@ -1,0 +1,15 @@
+.profile button {
+    width: 12rem;
+    margin: .5rem;
+}
+
+.profile {
+    display: flex;
+    flex-direction: column;
+    /* justify-content: center;
+    align-content: center; */
+    align-items: center;
+    flex-grow: 1;
+    justify-content: space-evenly;
+    gap: .5rem;
+}

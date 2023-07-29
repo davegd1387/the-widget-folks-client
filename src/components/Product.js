@@ -1,5 +1,5 @@
 import { useShop } from "../context/shop-cart";
-
+import "./products.css";
 const Product = (props) => {
   const { itemId, prodName, desc, price, user } = props;
   const { addToCart, inCart } = useShop();
@@ -12,7 +12,7 @@ const Product = (props) => {
         <h3 className="product--h3">{prodName}</h3>
         <p className="product--price">Price: ${price}</p>
       </div>
-      <p>{desc}</p>
+      <p className="product--desc">{desc}</p>
 
       {user && (
         <button className="addToCartBttn" onClick={() => addToCart(itemId)}>

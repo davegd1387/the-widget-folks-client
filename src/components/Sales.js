@@ -3,8 +3,8 @@ import { useAuth } from "../context/auth";
 import { Link } from "react-router-dom";
 import taxStatus from "../utils/taxStatus";
 import axios from "../api/axios";
+import "./sales.css";
 const Sales_URL = "/protected/sales/";
-
 const Sales = () => {
   const auth = useAuth();
   const { firstName, lastName, userId } = auth.user;
@@ -25,7 +25,7 @@ const Sales = () => {
       if (data.length > 0) {
         setYesNoSales("Purchases for ");
       } else {
-        setYesNoSales("Sorry, no surchases for ");
+        setYesNoSales("Sorry, no purchases for ");
       }
       setSales(data);
     } catch (err) {
@@ -51,14 +51,16 @@ const Sales = () => {
   return (
     <>
       <section>
-        <p ref={errRef} className={errMsg ? "errmsg" : "offscreen"}>
-          {errMsg}
-        </p>
+        <div className="sales">
+          <p ref={errRef} className={errMsg ? "errmsg" : "offscreen"}>
+            {errMsg}
+          </p>
 
-        <h2>
-          {yesNoSales}
-          {lastName}, {firstName}{" "}
-        </h2>
+          <h2 className="sales__h2">
+            {yesNoSales}
+            {lastName}, {firstName}{" "}
+          </h2>
+        </div>
         {sales.length > 0 && (
           <ul className="sales__container">
             <div className="sales__li">
@@ -69,7 +71,6 @@ const Sales = () => {
               <div className="sales__header">Status</div>
             </div>
             {sales.map((sale) => (
-              // <li key={sale.item} className="sales__li">
               <li key={sale.saleId} className="sales__li">
                 <div className="sales__item">
                   <Link

@@ -1,0 +1,31 @@
+.div__welcome {
+    display: flex;
+    flex-wrap: wrap;
+    flex-direction: column;
+    justify-content: center;
+    flex-direction: row;
+    justify-content: space-evenly;
+    align-items: center;
+    flex-grow: 1;
+    padding: 10rem 5rem;
+    /* text-align: center;
+    align-content: center;
+    padding: 10rem 10rem; */
+}
+
+.welcome__para {
+    font-size: 3rem;
+    text-align: center;
+}
+
+@media screen and (max-width: 1000px) {
+    .welcome__para {
+        font-size: 1.5rem;
+    }
+}
+
+@media screen and (max-width: 480px) {
+    .welcome__para {
+        font-size: .5rem;
+    }
+}

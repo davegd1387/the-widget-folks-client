@@ -2,6 +2,7 @@ import { useRef, useState, useEffect } from "react";
 import { useParams, useLocation, useNavigate } from "react-router-dom";
 import axios from "../api/axios";
 import { useAuth } from "../context/auth";
+import "./sale.css";
 const Sale_URL = "/protected/sale/";
 export default function Sale() {
   const auth = useAuth();
@@ -14,7 +15,6 @@ export default function Sale() {
   const redirectPath = location.state?.path || `/sales`;
   const [sale, setSale] = useState([]);
   const handleReturn = () => {
-    // console.log(`path: ${redirectPath}`);
     navigate(redirectPath, { replace: true });
   };
   const getSale = async () => {
@@ -45,13 +45,12 @@ export default function Sale() {
     getSale();
   }, []);
   return (
-    <section>
+    <section className="sale">
       <p ref={errRef} className={errMsg ? "errmsg" : "offscreen"}>
         {errMsg}
       </p>
-
+      <h2 className="sale__h2">Details for Sale #{saleId}</h2>
       <main className="sale__main">
-        <h2>Details for Sale #{saleId}</h2>
         <ul className="sale__container">
           <li key={0} className="sale__li">
             <div className="sale__header">Product</div>
@@ -70,7 +69,9 @@ export default function Sale() {
             </li>
           ))}
         </ul>
-        <button onClick={handleReturn}>Return</button>
+        <button className="sale__rtn_btn" onClick={handleReturn}>
+          Return
+        </button>
       </main>
     </section>
   );

@@ -8,9 +8,9 @@ const PURCHASE_URL = "/protected/sales/new";
 export const Cart = () => {
   const { user } = useAuth();
   const custId = user.custId;
+  console.log(`custId: ${custId}`);
   const { products, cartItems, getTotalCartAmount, clearCart } = useShop();
-  //   console.log(`getTotalCartAmount(): ${getTotalCartAmount()}`);
-  //   let totalAmount = 0;
+
   const totalAmount = parseFloat(getTotalCartAmount().toFixed(2));
   //   const totalAmount = (getTotalCartAmount() * 100) / 100;
   //   console.log(`totalAmount): ${totalAmount}`);

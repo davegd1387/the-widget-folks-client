@@ -1,8 +1,7 @@
 import { useNavigate } from "react-router-dom";
 import { useAuth } from "../context/auth";
-import axios from "../api/axios";
 import { User } from "./User";
-const LOGOUT_URL = "/protected/logout";
+import "./profile.css";
 export const Profile = () => {
   const auth = useAuth();
   const navigate = useNavigate();

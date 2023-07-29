@@ -193,6 +193,7 @@ const Register = () => {
         state,
         tel,
         userId,
+        custId,
       } = response?.data;
       auth.login({
         email,
@@ -206,6 +207,7 @@ const Register = () => {
         zip,
         tel,
         userId,
+        custId,
       });
       setSuccess(true);
       //clear state and controlled inputs
